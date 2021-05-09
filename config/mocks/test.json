@@ -1,0 +1,13 @@
+{
+  "request": {
+    "path": "/user",
+    "method": "GET"
+  },
+  "response": {
+    "statusCode": 200,
+    "header": {
+      "contentType": "application/json"
+    },
+    "body": "{\"test\": \"true\"}"
+  }
+}

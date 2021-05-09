@@ -1,0 +1,13 @@
+{
+  "request": {
+    "path": "/user/{$name}",
+    "method": "GET"
+  },
+  "response": {
+    "statusCode": 200,
+    "header": {
+      "contentType": "application/json"
+    },
+    "body": "{\"name\": \"${request.path.name}\"}"
+  }
+}
