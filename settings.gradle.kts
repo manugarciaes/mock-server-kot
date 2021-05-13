@@ -1,3 +1,2 @@
-
-rootProject.name = "API_REST"
-
+rootProject.name = "Mock_Server_Kot"
+include("src")

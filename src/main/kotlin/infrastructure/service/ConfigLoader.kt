@@ -1,10 +1,10 @@
 package infrastructure.service
 
-import application.`interface`.MockFactoryInterface
-import domain.Mock
+import application.`interface`.MockBuilderInterface
+import domain.model.MockRoute
 
-class ConfigLoader(private val mockFactory: MockFactoryInterface) {
-    fun get(): List<Mock> {
-        return mockFactory()
+class ConfigLoader(private val mockBuilder: MockBuilderInterface) {
+    fun get(): List<MockRoute> {
+        return mockBuilder()
     }
 }

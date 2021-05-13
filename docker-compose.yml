@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    expose:
+      - 8080:8080
+    networks:
+      - backend
+    environment:
+      - MOCK_PORT=8080
+      - MOCK_HOST=localhost
+      - MOCK_PATH=config/mocks
+    restart: always
+
+networks:
+  backend:
+
+volumes:
+  socket:

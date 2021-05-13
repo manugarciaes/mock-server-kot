@@ -8,6 +8,15 @@ plugins {
 group = "me.manug"
 version = "1.0-SNAPSHOT"
 
+sourceSets {
+    main {
+        java.srcDir("src/main/kotlin")
+    }
+    test {
+        java.srcDir("src/test/kotlin")
+    }
+}
+
 repositories {
     jcenter()
     mavenCentral()
@@ -16,6 +25,8 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test-junit"))
+    testImplementation("io.ktor:ktor-server-test-host:1.4.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
     implementation("io.ktor:ktor-server-netty:1.4.0")
     implementation("io.ktor:ktor-html-builder:1.4.0")
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
@@ -31,5 +42,5 @@ tasks.withType<KotlinCompile>() {
 }
 
 application {
-    mainClassName = "mainKt"
+    mainClassName = "io.ktor.server.netty.EngineMain"
 }
