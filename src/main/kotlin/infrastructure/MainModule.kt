@@ -1,8 +1,9 @@
 package infrastructure
 
-import application.factory.MockBuilder
+import application.builder.RouteListBuilder
 import infrastructure.service.ConfigLoader
-import infrastructure.service.JsonReader
+import infrastructure.service.FileReader
+import infrastructure.service.JsonFileMapper
 import infrastructure.service.generator
 import io.ktor.application.*
 import io.ktor.features.*
@@ -16,9 +17,9 @@ fun Application.main() {
             application.log.debug(it.buildText())
         }
         val configLoader = ConfigLoader(
-            MockBuilder(
-                System.getenv("MOCK_PATH") ?: "config/mocks",
-                JsonReader
+            RouteListBuilder(
+                FileReader(System.getenv("MOCK_PATH") ?: "config/mocks"),
+                JsonFileMapper
             )
         )
 

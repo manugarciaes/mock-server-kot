@@ -1,18 +1,17 @@
 package infrastructure.service
 
-import application.`interface`.FileReaderInterface
+import domain.`interface`.RouteMapperInterface
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import domain.model.MockRoute
+import domain.model.Route
 import java.io.File
 
-object JsonReader: FileReaderInterface {
-    override fun readFile(file: File): MockRoute {
+object JsonFileMapper: RouteMapperInterface{
+    override fun map(file: File): Route? {
+        if (file.isDirectory) {
+            return null;
+        }
         val mapper = jacksonObjectMapper()
         return mapper.readValue(file.readText())
-    }
-
-    override fun readPath(path: String): FileTreeWalk {
-        return File(path).walk()
     }
 }
